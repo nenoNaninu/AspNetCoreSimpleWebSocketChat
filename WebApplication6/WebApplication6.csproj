@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\real-time2.html" />
+    <Content Remove="wwwroot\real-time.html" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\real-time2.html" />
+    <None Include="wwwroot\real-time.html" />
   </ItemGroup>
 
   <ItemGroup>
