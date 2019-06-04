@@ -40,7 +40,9 @@ namespace WebApplication6.WebSocketManager
 
         public async Task Receive(WebSocket webSocket, Action<WebSocketReceiveResult, byte[]> handleMessage)
         {
-            var buffer = new byte[2014 * 4];
+            var buffer = new byte[1024 * 4];
+//            var w = WebSocket.CreateClientWebSocket()
+//            WebSocketState.
 
             while (webSocket.State == WebSocketState.Open)
             {
