@@ -5,9 +5,9 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApplication6.WebSocketManager
+namespace WebSocketChat
 {
-    public class WebSocketConnectionManager
+    public class WebSocketObjectHolder
     {
         private ConcurrentDictionary<string, WebSocket> _sockets = new ConcurrentDictionary<string, WebSocket>();
 

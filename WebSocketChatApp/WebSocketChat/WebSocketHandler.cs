@@ -4,31 +4,30 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApplication6.WebSocketManager
+namespace WebSocketChat
 {
     public abstract class WebSocketHandler
     {
-        protected WebSocketConnectionManager WebSocketConnectionManager { get; set; }
+        protected WebSocketObjectHolder WebSocketObjectHolder { get; set; }
 
-        public WebSocketHandler(WebSocketConnectionManager webSocketConnectionManager)
+        public WebSocketHandler(WebSocketObjectHolder webSocketObjectHolder)
         {
-            WebSocketConnectionManager = webSocketConnectionManager;
+            WebSocketObjectHolder = webSocketObjectHolder;
         }
 
         public virtual async Task OnConnected(WebSocket socket)
         {
-            WebSocketConnectionManager.AddSocket(socket);
+            WebSocketObjectHolder.AddSocket(socket);
         }
 
         public virtual async Task OnDisconnected(WebSocket socket)
         {
-            await WebSocketConnectionManager.RemoveSocket(WebSocketConnectionManager.GetId(socket));
+            await WebSocketObjectHolder.RemoveSocket(WebSocketObjectHolder.GetId(socket));
         }
 
         public async Task SendMessageAsync(WebSocket socket, string message)
         {
             if(socket.State != WebSocketState.Open) return;
-
 
             var buffer = Encoding.UTF8.GetBytes(message);
 
@@ -39,12 +38,12 @@ namespace WebApplication6.WebSocketManager
 
         public async Task SendMessageAsync(string socketId, string message)
         {
-           await SendMessageAsync(WebSocketConnectionManager.GetSocketById(socketId), message);
+           await SendMessageAsync(WebSocketObjectHolder.GetSocketById(socketId), message);
         }
 
         public async Task SendMessageToAllAsync(string message)
         {
-            foreach (var pair in WebSocketConnectionManager.GetAll())
+            foreach (var pair in WebSocketObjectHolder.GetAll())
             {
                 if (pair.Value.State == WebSocketState.Open)
                 {

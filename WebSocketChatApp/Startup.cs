@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication6.WebSocketManager;
+using WebSocketChat;
 
 namespace WebApplication6
 {
@@ -32,7 +32,7 @@ namespace WebApplication6
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddWebSocketManager();
+            services.AddWebSocketChatHandler();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -2,11 +2,11 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApplication6.WebSocketManager
+namespace WebSocketChat
 {
     public class TestMessageHandler : WebSocketHandler
     {
-        public TestMessageHandler(WebSocketConnectionManager webSocketConnectionManager) : base(webSocketConnectionManager)
+        public TestMessageHandler(WebSocketObjectHolder webSocketObjectHolder) : base(webSocketObjectHolder)
         {
         }
 
@@ -14,13 +14,13 @@ namespace WebApplication6.WebSocketManager
         {
             await base.OnConnected(socket);
 
-            var socketId = WebSocketConnectionManager.GetId(socket);
+            var socketId = WebSocketObjectHolder.GetId(socket);
             await SendMessageToAllAsync($"{socketId} is now connected");
         }
 
         public override async Task ReceiveAsync(WebSocket socket, WebSocketReceiveResult result, byte[] buffer)
         {
-            var socketId = WebSocketConnectionManager.GetId(socket);
+            var socketId = WebSocketObjectHolder.GetId(socket);
             var message = $"{socketId} said: {Encoding.UTF8.GetString(buffer, 0, result.Count)}";
 
             await SendMessageToAllAsync(message);
@@ -28,7 +28,7 @@ namespace WebApplication6.WebSocketManager
 
         public override async Task OnDisconnected(WebSocket socket)
         {
-            var socketId = WebSocketConnectionManager.GetId(socket);
+            var socketId = WebSocketObjectHolder.GetId(socket);
 
             await base.OnDisconnected(socket);
             await SendMessageToAllAsync($"{socketId} disconnected");

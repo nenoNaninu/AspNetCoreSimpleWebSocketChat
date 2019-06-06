@@ -4,14 +4,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApplication6.WebSocketManager
+namespace WebSocketChat
 {
-    public class WebSocketManagerMiddleware
+    public class WebSocketChatMiddleware
     {
         private readonly RequestDelegate _next;
         private WebSocketHandler _webSocketHandler { get; set; }
 
-        public WebSocketManagerMiddleware(RequestDelegate next, WebSocketHandler webSocketHandler)
+        public WebSocketChatMiddleware(RequestDelegate next, WebSocketHandler webSocketHandler)
         {
             _next = next;
             _webSocketHandler = webSocketHandler;
@@ -41,8 +41,6 @@ namespace WebApplication6.WebSocketManager
         public async Task Receive(WebSocket webSocket, Action<WebSocketReceiveResult, byte[]> handleMessage)
         {
             var buffer = new byte[1024 * 4];
-//            var w = WebSocket.CreateClientWebSocket()
-//            WebSocketState.
 
             while (webSocket.State == WebSocketState.Open)
             {

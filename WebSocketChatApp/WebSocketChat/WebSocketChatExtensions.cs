@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WebApplication6.WebSocketManager
+namespace WebSocketChat
 {
-    public static class WebSocketManagerExtensions
+    public static class WebSocketChatExtensions
     {
-        public static IServiceCollection AddWebSocketManager(this IServiceCollection services)
+        public static IServiceCollection AddWebSocketChatHandler(this IServiceCollection services)
         {
-            services.AddTransient<WebSocketConnectionManager>();
+            services.AddTransient<WebSocketObjectHolder>();
 
             foreach (var type in Assembly.GetEntryAssembly().ExportedTypes)
             {
@@ -25,7 +25,7 @@ namespace WebApplication6.WebSocketManager
         public static IApplicationBuilder MapWebSocketManager(this IApplicationBuilder app, PathString path,
             WebSocketHandler handler)
         {
-            return app.Map(path, _app => _app.UseMiddleware<WebSocketManagerMiddleware>(handler));
+            return app.Map(path, _app => _app.UseMiddleware<WebSocketChatMiddleware>(handler));
         }
     }
 }

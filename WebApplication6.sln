@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication6", "WebApplication6\WebApplication6.csproj", "{D60CA55F-4ABE-4EC2-8C26-85D673C7F139}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSocketChatApp", "WebSocketChatApp\WebSocketChatApp.csproj", "{D60CA55F-4ABE-4EC2-8C26-85D673C7F139}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
