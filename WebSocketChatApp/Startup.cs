@@ -56,8 +56,8 @@ namespace WebApplication6
 
             app.UseWebSockets();
 
-            app.MapWebSocketManager("/ws", serviceProvider.GetService<ChatMessageHandler>());
-            app.MapWebSocketManager("/test", serviceProvider.GetService<TestMessageHandler>());
+            app.MapWebSocketChatMiddleware("/ws", serviceProvider.GetService<ChatMessageHandler>());
+            app.MapWebSocketChatMiddleware("/test", serviceProvider.GetService<TestMessageHandler>());
 
             app.UseMvc(routes =>
             {

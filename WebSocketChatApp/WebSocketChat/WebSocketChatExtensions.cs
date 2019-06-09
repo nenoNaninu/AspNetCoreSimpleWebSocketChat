@@ -22,7 +22,7 @@ namespace WebSocketChat
             return services;
         }
 
-        public static IApplicationBuilder MapWebSocketManager(this IApplicationBuilder app, PathString path,
+        public static IApplicationBuilder MapWebSocketChatMiddleware(this IApplicationBuilder app, PathString path,
             WebSocketHandler handler)
         {
             return app.Map(path, _app => _app.UseMiddleware<WebSocketChatMiddleware>(handler));
