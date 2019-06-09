@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\real-time.html" />
+    <None Include="wwwroot\chat.html" />
   </ItemGroup>
 
   <ItemGroup>
