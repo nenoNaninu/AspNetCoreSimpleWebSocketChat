@@ -15,9 +15,10 @@ namespace WebSocketChat
             WebSocketObjectHolder = webSocketObjectHolder;
         }
 
-        public virtual async Task OnConnected(WebSocket socket)
+        public virtual Task OnConnected(WebSocket socket)
         {
             WebSocketObjectHolder.AddSocket(socket);
+            return Task.CompletedTask;
         }
 
         public virtual async Task OnDisconnected(WebSocket socket)
